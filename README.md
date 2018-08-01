@@ -2,9 +2,9 @@
 
 This project is implemented using Tesseract OCR for character recogniton in images and pdf.
 
-Currently 2 languages are supported, English and Kannada.
+Currently 4 languages are supported, English, Kannada, Tamil and Telegu.
 
-A web interface is developed using Django framework, which allows users to upload an image or a pdf on the webpage that returns the text grabbed from the file uploaded.
+A web interface is developed using Django framework, which allows users to upload an image or a pdf onto the webpage that returns the text grabbed from the file uploaded.
 
 ### Dependencies:
 
@@ -32,9 +32,9 @@ Other dependencies:
 
 > pip install autocorrect
 
-To download the trained data for Kannada, go to
-`https://github.com/indic-ocr/tessdata/tree/master/kan`
-and copy that file into tessdata in your local folder where tesseract is installed.
+To download the trained data for Kannada,Tamil and Telegu, go to
+`https://github.com/indic-ocr/tessdata/`
+The respective trained data will be found in the folders `kan` `tam` and `tel`. Download and copy those file into `tessdata` in your local folder where `tesseract` is installed.
 
 ## Procedure:
 
@@ -50,3 +50,22 @@ To tag the few proper nouns in english that might not be recognised corectly, ru
 #### The extraction is quite resource intensive and takes time(depends on the hardware used), especially if the uploaded file is a large pdf. It is advised to break the pdf into chunks of a couple of pages(5-6) per file and uploading them for quicker results.
 
 The extracted text can also be found int the project folder in a text file `extracted.txt`.
+
+
+#### To run extract text without web interface:
+Install the dependencies mentioned earlier and just download the `ocr.py` file. Copy the file(from which text is to be extracted) into the folder containing `ocr.py`.
+
+Run `ocr.py` on the command prompt/terminal.
+> python ocr.py
+
+After execution of the program, pass the file name to the following functions to get the extracted text printed on the terminal.
+Extracted text can also be found in `extracted.txt` inside the same directory. 
+
+`imgOcrEng('file_name')` : for English-Image
+
+`pdfOcrEng('file_name')` : for English-pdf
+
+Replace Eng with Kan,Tam or Tel for Kannada,Tamil or Telegu respectively.
+
+### Note:If you are facing an error saying `normproto file is not in unichar set`, you have to install the support for indian languages' character set.
+
